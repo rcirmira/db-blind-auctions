@@ -1,0 +1,14 @@
+<configuration>
+    <!-- Console appender that outputs logs to the console -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%date{ISO8601} - %-5level - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Root logger that uses the STDOUT appender -->
+    <root level="INFO">
+        <appender-ref ref="STDOUT"/>
+    </root>
+
+</configuration>
