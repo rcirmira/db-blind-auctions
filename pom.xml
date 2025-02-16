@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.db</groupId>
+    <artifactId>system-parent</artifactId>
+    <version>0.1</version>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>auction-service</module>
+        <module>backend-service</module>
+        <module>user-service</module>
+        <module>user-service-resource</module>
+
+    </modules>
+
+    <properties>
+
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+
+        <testng.version>7.11.0</testng.version>
+        <dependency.version.javax.wsrs>2.1.1</dependency.version.javax.wsrs>
+        <dependency.version.javax-servlet-api>4.0.1</dependency.version.javax-servlet-api>
+        <dependency.version.swagger>2.2.20</dependency.version.swagger>
+        <dependency.version.jackson>2.16.0</dependency.version.jackson>
+    </properties>
+
+    <!--    <build>-->
+    <!--        <plugins>-->
+    <!--            <plugin>-->
+    <!--                <groupId>org.apache.maven.plugins</groupId>-->
+    <!--                <artifactId>maven-surefire-report-plugin</artifactId>-->
+    <!--                <version>3.0.0-M1</version>-->
+    <!--                <configuration>-->
+    <!--                    <outputDirectory>${basedir}/target/tests/server</outputDirectory>-->
+    <!--                </configuration>-->
+    <!--            </plugin>-->
+    <!--            <plugin>-->
+    <!--                <groupId>org.jacoco</groupId>-->
+    <!--                <artifactId>jacoco-maven-plugin</artifactId>-->
+    <!--                <version>0.8.0</version>-->
+    <!--                <executions>-->
+    <!--                    <execution>-->
+    <!--                        <id>pre-unit-test</id>-->
+    <!--                        <goals>-->
+    <!--                            <goal>prepare-agent</goal>-->
+    <!--                        </goals>-->
+    <!--                        <configuration>-->
+    <!--                            <destFile>${basedir}/target/coverage-reports/jacoco-unit.exec</destFile>-->
+    <!--                        </configuration>-->
+    <!--                    </execution>-->
+    <!--                    <execution>-->
+    <!--                        <id>post-unit-test</id>-->
+    <!--                        <phase>test</phase>-->
+    <!--                        <goals>-->
+    <!--                            <goal>report</goal>-->
+    <!--                        </goals>-->
+    <!--                        <configuration>-->
+    <!--                            <dataFile>${basedir}/target/coverage-reports/jacoco-unit.exec</dataFile>-->
+    <!--                            <outputDirectory>${basedir}/target/tests/coverage</outputDirectory>-->
+    <!--                        </configuration>-->
+    <!--                    </execution>-->
+    <!--                    <execution>-->
+    <!--                        <id>check</id>-->
+    <!--                        <goals>-->
+    <!--                            <goal>check</goal>-->
+    <!--                        </goals>-->
+    <!--                        <configuration>-->
+    <!--                            <dataFile>${basedir}/target/coverage-reports/jacoco-unit.exec</dataFile>-->
+    <!--                            <rules>-->
+    <!--                                <rule>-->
+    <!--                                    <element>BUNDLE</element>-->
+    <!--                                    <limits>-->
+    <!--                                        <limit>-->
+    <!--                                            <counter>LINE</counter>-->
+    <!--                                            <value>COVEREDRATIO</value>-->
+    <!--                                            <minimum>0.88</minimum>-->
+    <!--                                        </limit>-->
+    <!--                                        <limit>-->
+    <!--                                            <counter>INSTRUCTION</counter>-->
+    <!--                                            <value>COVEREDRATIO</value>-->
+    <!--                                            <minimum>0.92</minimum>-->
+    <!--                                        </limit>-->
+    <!--                                        <limit>-->
+    <!--                                            <counter>BRANCH</counter>-->
+    <!--                                            <value>COVEREDRATIO</value>-->
+    <!--                                            <minimum>0.86</minimum>-->
+    <!--                                        </limit>-->
+    <!--                                        <limit>-->
+    <!--                                            <counter>METHOD</counter>-->
+    <!--                                            <value>MISSEDCOUNT</value>-->
+    <!--                                            <maximum>4.00</maximum>-->
+    <!--                                        </limit>-->
+    <!--                                        <limit>-->
+    <!--                                            <counter>CLASS</counter>-->
+    <!--                                            <value>MISSEDCOUNT</value>-->
+    <!--                                            <maximum>1</maximum>-->
+    <!--                                        </limit>-->
+    <!--                                    </limits>-->
+    <!--                                </rule>-->
+    <!--                            </rules>-->
+    <!--                        </configuration>-->
+    <!--                    </execution>-->
+    <!--                </executions>-->
+    <!--            </plugin>-->
+    <!--        </plugins>-->
+    <!--    </build>-->
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>system-user-resource</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <!-- Jetty -->
+            <dependency>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-server</artifactId>
+                <version>12.0.14</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.eclipse.jetty.ee10</groupId>
+                <artifactId>jetty-ee10-servlet</artifactId>
+                <version>12.0.14</version>
+            </dependency>
+
+            <!-- Jersey for JAX-RS (Jakarta REST) support without HK2 -->
+            <dependency>
+                <groupId>jakarta.ws.rs</groupId>
+                <artifactId>jakarta.ws.rs-api</artifactId>
+                <version>3.1.0</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.glassfish.jersey.core</groupId>
+                <artifactId>jersey-common</artifactId>
+                <version>3.1.3</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.glassfish.jersey.containers</groupId>
+                <artifactId>jersey-container-servlet</artifactId>
+                <version>3.1.3</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.glassfish.jersey.inject</groupId>
+                <artifactId>jersey-hk2</artifactId>
+                <version>3.1.3</version>
+            </dependency>
+
+            <!-- HK2 -->
+            <dependency>
+                <groupId>org.glassfish.hk2</groupId>
+                <artifactId>hk2-api</artifactId>
+                <version>3.0.3</version>
+            </dependency>
+            <dependency>
+                <groupId>org.glassfish.hk2</groupId>
+                <artifactId>hk2-locator</artifactId>
+                <version>3.0.3</version>
+            </dependency>
+            <dependency>
+                <groupId>org.glassfish.hk2</groupId>
+                <artifactId>hk2-utils</artifactId>
+                <version>3.0.3</version>
+            </dependency>
+
+            <!-- JSON Support (Jackson) -->
+            <dependency>
+                <groupId>org.glassfish.jersey.media</groupId>
+                <artifactId>jersey-media-json-jackson</artifactId>
+                <version>3.1.3</version>
+            </dependency>
+
+             <!-- OpenAPI annotations -->
+            <dependency>
+                <groupId>io.swagger.core.v3</groupId>
+                <artifactId>swagger-annotations</artifactId>
+                <version>${dependency.version.swagger}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.swagger.core.v3</groupId>
+                <artifactId>swagger-jaxrs2</artifactId>
+                <version>${dependency.version.swagger}</version>
+            </dependency>
+
+            <!-- test -->
+            <dependency>
+                <groupId>org.testng</groupId>
+                <artifactId>testng</artifactId>
+                <version>${testng.version}</version>
+                <scope>test</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+</project>
