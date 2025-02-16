@@ -17,5 +17,5 @@ public interface UserResource {
     @GET
     @Path("/get/{userToken}")
     @Produces(MediaType.APPLICATION_JSON)
-    User getAccountById(@PathParam("userToken") String userToken);
+    User getUserAccountByToken(@PathParam("userToken") String userToken);
 }

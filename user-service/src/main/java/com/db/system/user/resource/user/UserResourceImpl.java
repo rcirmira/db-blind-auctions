@@ -18,7 +18,7 @@ public class UserResourceImpl implements UserResource {
     }
 
     @Override
-    public User getAccountById(String userToken) {
+    public User getUserAccountByToken(String userToken) {
         if(userDetailsService.isValidToken(userToken)) {
             return userDetailsService.getUser(userToken);
         }
