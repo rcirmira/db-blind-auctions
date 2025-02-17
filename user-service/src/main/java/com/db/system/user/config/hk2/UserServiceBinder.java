@@ -1,4 +1,4 @@
-package com.db.system.user;
+package com.db.system.user.config.hk2;
 
 import com.db.system.user.resource.user.UserResource;
 import com.db.system.user.resource.user.UserResourceImpl;

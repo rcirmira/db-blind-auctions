@@ -7,7 +7,7 @@
     </appender>
 
     <!-- Root logger that uses the STDOUT appender -->
-    <root level="INFO">
+    <root level="DEBUG">
         <appender-ref ref="STDOUT"/>
     </root>
 

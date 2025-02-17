@@ -1,0 +1,1 @@
+create table auction_user (id bigint auto_increment, name varchar(255));

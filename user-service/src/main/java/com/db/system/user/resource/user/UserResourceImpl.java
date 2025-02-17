@@ -5,7 +5,7 @@ import com.db.system.user.service.UserDetailsService;
 import jakarta.inject.Inject;
 import jakarta.inject.Singleton;
 import jakarta.ws.rs.Path;
-import jakarta.ws.rs.WebApplicationException;
+import jakarta.ws.rs.core.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,13 +22,24 @@ public class UserResourceImpl implements UserResource {
     }
 
     @Override
-    public User getUserAccountByToken(String userToken) {
-        LOG.info("getUserAccountByToken with userToken: {}", userToken);
+    public Response getUserToken(String name) {
+        LOG.info("getUserToken with name: {}", name);
 
-        if(userDetailsService.isValidToken(userToken)) {
-            return userDetailsService.getUser(userToken);
+
+        User user = userDetailsService.getUserByName(name);
+        if(user != null) {
+            // TODO this should be token
+            return Response.ok(user).build();
         }
 
-        throw new WebApplicationException("user token not valid!");
+        return Response.status(Response.Status.NOT_FOUND).build();
+    }
+
+    @Override
+    public boolean isValidToken(String userToken) {
+        LOG.info("isValidToken with userToken: {}", userToken);
+
+        // TODO add JWT with some expiry
+        return false;
     }
 }
