@@ -1,24 +1,41 @@
 package com.db.system.user.service;
 
-import com.db.system.user.config.database.MyBatisConfig;
-import com.db.system.user.dao.UserMapper;
+import com.db.system.user.dao.UserDao;
 import com.db.system.user.data.model.User;
+import com.db.system.user.service.internal.model.TokenMappingPair;
+import jakarta.inject.Inject;
 import jakarta.inject.Singleton;
-import org.apache.ibatis.session.SqlSession;
 
 @Singleton
 public class UserDetailsServiceImpl implements UserDetailsService {
-    @Override
-    public Boolean isValidToken(String userToken) {
-        // TODO implement
-        return false;
+    private final UserDao userDao;
+    private final JwtService jwtService;
+
+    @Inject
+    public UserDetailsServiceImpl(UserDao userDao, JwtService jwtService) {
+        this.userDao = userDao;
+        this.jwtService = jwtService;
     }
 
     @Override
-    public User getUserByName(String name) {
-        try (SqlSession session = MyBatisConfig.getSqlSessionFactory().openSession()) {
-            UserMapper mapper = session.getMapper(UserMapper.class);
-            return mapper.getUserByName(name);
+    public User getUserByToken(String userToken) {
+        TokenMappingPair pair = jwtService.getTokenMappingPair(userToken);
+        if(pair != null) {
+            User user = userDao.getUserByName(pair.getName());
+            if (user != null && user.getId().equals(pair.getId()) && user.getName().equals(pair.getName())) {
+                return user;
+            }
         }
+        return null;
+    }
+
+    @Override
+    public String getUserToken(String name) {
+        User user = userDao.getUserByName(name);
+        if(user != null) {
+            return jwtService.getToken(user);
+        }
+        return  null;
+
     }
 }

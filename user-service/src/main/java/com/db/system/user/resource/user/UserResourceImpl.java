@@ -25,21 +25,22 @@ public class UserResourceImpl implements UserResource {
     public Response getUserToken(String name) {
         LOG.info("getUserToken with name: {}", name);
 
-
-        User user = userDetailsService.getUserByName(name);
-        if(user != null) {
-            // TODO this should be token
-            return Response.ok(user).build();
+        String token = userDetailsService.getUserToken(name);
+        if(token != null) {
+            return Response.ok(token).build();
         }
 
         return Response.status(Response.Status.NOT_FOUND).build();
     }
 
     @Override
-    public boolean isValidToken(String userToken) {
+    public Response getUserByToken(String userToken) {
         LOG.info("isValidToken with userToken: {}", userToken);
 
-        // TODO add JWT with some expiry
-        return false;
+        User user = userDetailsService.getUserByToken(userToken);
+        if(user != null) {
+            return Response.ok(user).build();
+        }
+        return Response.status(Response.Status.FORBIDDEN).build();
     }
 }

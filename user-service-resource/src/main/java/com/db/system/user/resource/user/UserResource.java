@@ -19,9 +19,10 @@ public interface UserResource {
     @Produces(MediaType.APPLICATION_JSON)
     Response getUserToken(@PathParam("name") String name);
 
-    @Operation(summary = "Validates passed user token")
+    @Operation(summary = "get user for passed token after validation")
     @Tag(name = "User token")
     @GET
-    @Path("/valid/{userToken}")
-    boolean isValidToken(@PathParam("userToken") String userToken);
+    @Path("/token/get/{userToken}")
+    @Produces(MediaType.APPLICATION_JSON)
+    Response getUserByToken(@PathParam("userToken") String userToken);
 }

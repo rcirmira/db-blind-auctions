@@ -27,6 +27,7 @@
         <dependency.version.jetty>12.0.14</dependency.version.jetty>
         <dependency.version.jersey>3.1.9</dependency.version.jersey>
         <dependency.version.hk2>3.1.0</dependency.version.hk2>
+        <dependency.version.jsonwebtoken>0.12.6</dependency.version.jsonwebtoken>
     </properties>
 
     <!--    <build>-->
@@ -232,7 +233,19 @@
             <dependency>
                 <groupId>io.jsonwebtoken</groupId>
                 <artifactId>jjwt-api</artifactId>
-                <version>0.12.6</version>
+                <version>${dependency.version.jsonwebtoken}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt-impl</artifactId>
+                <version>${dependency.version.jsonwebtoken}</version>
+                <scope>runtime</scope>
+            </dependency>
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt-jackson</artifactId>
+                <version>${dependency.version.jsonwebtoken}</version>
+                <scope>runtime</scope>
             </dependency>
 
             <!-- Test -->
