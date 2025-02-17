@@ -45,18 +45,23 @@ public class JwtServiceImpl implements JwtService {
 
     @Override
     public TokenMappingPair getTokenMappingPair(String token) {
-        Jws<Claims> claims = Jwts.parser()
-                .verifyWith(pair.getPublic())
-                .build().parseSignedClaims(token);
+        try {
+            Jws<Claims> claims = Jwts.parser()
+                    .verifyWith(pair.getPublic())
+                    .build().parseSignedClaims(token);
 
-        String name = claims.getPayload().getSubject();
-        Integer id = claims.getPayload().get("id", Integer.class);
+            String name = claims.getPayload().getSubject();
+            Integer id = claims.getPayload().get("id", Integer.class);
 
-        if(claims.getPayload().getExpiration().before(new Date())) {
-            LOG.warn("Token for user id {} and name {} expired", id, name);
+            if(claims.getPayload().getExpiration().before(new Date())) {
+                LOG.warn("Token for user id {} and name {} expired", id, name);
+                return null;
+            } else {
+                return new TokenMappingPair(id, name);
+            }
+        } catch (Exception e) {
+            LOG.error("JWT parsing error", e);
             return null;
-        } else {
-            return new TokenMappingPair(id, name);
         }
     }
 }
