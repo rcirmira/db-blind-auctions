@@ -52,3 +52,40 @@ You need to run 3 classes
 backend-service/src/main/java/com/db/system/backend/StartBackendService.java
 user-service/src/main/java/com/db/system/user/StartUserService.java
 auction-service/src/main/java/com/db/system/auction/StartAuctionService.java
+
+Then these are the steps to run the auction
+1. Get a token for a user, e.g. Adam
+```
+curl -X 'GET' \
+  'http://localhost:8085/api/v1/backend/user/get/Adam' \
+  -H 'accept: text/plain'
+```
+2. Add an auction
+```
+curl -X 'POST' \
+  'http://localhost:8085/api/v1/backend/auction/add/user/token/eyJhbGciOiJFUzUxMiJ9.eyJzdWIiOiJBZGFtIiwiZXhwIjoxNzM5OTA4NTk0LCJpZCI6Mn0.AFtxTj0h0TzTLVzTcLRJ1Fj2dBmgKxfz7h-oDU5q7zkS9AgK8QM9sUYno_KW5kiKGagxYInEnxlkln5C0dN6Sou-AHT-EnD9ON1GIKEPK3v5FqAEsylVF_8SVxNrWDyN2PFbHCd6_1S53ZPDXiuSE_mQEc81sXg3yliQE8PZontJCKco' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "name": "a",
+  "minPrice": 10
+}'
+```
+3. Bid on auction
+```
+curl -X 'POST' \
+'http://localhost:8085/api/v1/backend/auction/bid/user/token/eyJhbGciOiJFUzUxMiJ9.eyJzdWIiOiJBZGFtIiwiZXhwIjoxNzM5OTA4NTk0LCJpZCI6Mn0.AFtxTj0h0TzTLVzTcLRJ1Fj2dBmgKxfz7h-oDU5q7zkS9AgK8QM9sUYno_KW5kiKGagxYInEnxlkln5C0dN6Sou-AHT-EnD9ON1GIKEPK3v5FqAEsylVF_8SVxNrWDyN2PFbHCd6_1S53ZPDXiuSE_mQEc81sXg3yliQE8PZontJCKco' \
+-H 'accept: application/json' \
+-H 'Content-Type: application/json' \
+-d '{
+"auctionId": 1,
+"price": 12
+}'
+```
+4. End an auction
+```
+curl -X 'POST' \
+  'http://localhost:8085/api/v1/backend/auction/1/end/user/eyJhbGciOiJFUzUxMiJ9.eyJzdWIiOiJBZGFtIiwiZXhwIjoxNzM5OTA4NTk0LCJpZCI6Mn0.AFtxTj0h0TzTLVzTcLRJ1Fj2dBmgKxfz7h-oDU5q7zkS9AgK8QM9sUYno_KW5kiKGagxYInEnxlkln5C0dN6Sou-AHT-EnD9ON1GIKEPK3v5FqAEsylVF_8SVxNrWDyN2PFbHCd6_1S53ZPDXiuSE_mQEc81sXg3yliQE8PZontJCKco' \
+  -H 'accept: application/json' \
+  -d ''
+```
