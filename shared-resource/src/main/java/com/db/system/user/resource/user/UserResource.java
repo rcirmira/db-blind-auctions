@@ -11,7 +11,7 @@ import jakarta.ws.rs.core.Response;
 public interface UserResource {
     @GET
     @Path("/user/get/{name}")
-    @Produces(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.TEXT_PLAIN)
     Response getUserToken(@PathParam("name") String name);
 
     @GET

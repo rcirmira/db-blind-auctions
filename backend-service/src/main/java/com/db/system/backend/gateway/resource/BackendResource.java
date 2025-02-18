@@ -18,7 +18,7 @@ public interface BackendResource {
     @Operation(summary = "Gets user for passed token")
     @GET
     @Path("/user/get/{name}")
-    @Produces(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.TEXT_PLAIN)
     Response getUserToken(@PathParam("name") String name);
 
     @Operation(summary = "Creates new auction product with a minimum bid")
