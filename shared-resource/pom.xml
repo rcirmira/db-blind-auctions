@@ -10,7 +10,7 @@
         <version>0.1</version>
     </parent>
 
-    <artifactId>user-service-resource</artifactId>
+    <artifactId>shared-resource</artifactId>
     <packaging>jar</packaging>
 
     <properties>

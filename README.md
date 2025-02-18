@@ -19,13 +19,18 @@ OpenJDK 64-Bit Server VM (build 17.0.14+7-Ubuntu-124.04, mixed mode, sharing)
 The code was divided into 3 modules under `system-parent` root maven project
 - backend-service - this is where all the API calls to the auction system are coming in
 - user-service - internal user service authenticating the users and verifying if the token is valid
-- user-service-resource - API interface of the user service making API calls easier 
+- shared-resource - API interface of the user service making API calls easier 
 - auction-service - internal auction service managing all the auctions
 - auction-service-resource - API interface of the auction service making API calls easier
   
 The backend-service is running on http://localhost:8085 and the swagger over there is used to show easy to use UI to fire requests
+The user-service is running on http://localhost:8086
+The auction-service is running on http://localhost:8087
+
+The Swagger UI is running on http://localhost:8085/swagger-ui
 
 There are pre-canned users inserted into the DB defined by name in `user-service/src/main/resources/users.txt`
+
 
 ## Source Code
 

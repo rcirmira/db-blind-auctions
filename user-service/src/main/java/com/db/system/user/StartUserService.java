@@ -25,7 +25,7 @@ public class StartUserService {
     private static final Logger LOG = LoggerFactory.getLogger(StartUserService.class);
 
     public static void main(String[] args) throws Exception {
-        int port = 8085;
+        int port = 8086;
         LOG.info("Starting Jetty server...");
         Server server = newServer(port);
         try {

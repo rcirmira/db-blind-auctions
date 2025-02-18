@@ -13,7 +13,7 @@
         <module>auction-service</module>
         <module>backend-service</module>
         <module>user-service</module>
-        <module>user-service-resource</module>
+        <module>shared-resource</module>
 
     </modules>
 
@@ -115,7 +115,7 @@
         <dependencies>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>user-service-resource</artifactId>
+                <artifactId>shared-resource</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
@@ -204,6 +204,13 @@
                         <artifactId>jackson-annotations</artifactId>
                     </exclusion>
                 </exclusions>
+            </dependency>
+
+            <!-- Swagger UI -->
+            <dependency>
+                <groupId>org.webjars</groupId>
+                <artifactId>swagger-ui</artifactId>
+                <version>4.15.5</version>
             </dependency>
 
             <!-- SLF4J API -->

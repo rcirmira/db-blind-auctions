@@ -1,7 +1,6 @@
 package com.db.system.backend;
 
 import com.db.system.backend.config.hk2.JerseyConfig;
-import com.db.system.user.data.model.User;
 import org.eclipse.jetty.ee10.servlet.ServletContextHandler;
 import org.eclipse.jetty.ee10.servlet.ServletHolder;
 import org.eclipse.jetty.server.Server;
@@ -9,23 +8,18 @@ import org.glassfish.jersey.servlet.ServletContainer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.IOException;
-import java.net.URISyntaxException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.Objects;
-import java.util.Scanner;
 
 public class StartBackendService {
     private static final Logger LOG = LoggerFactory.getLogger(StartBackendService.class);
 
     public static void main(String[] args) throws Exception {
-        int port = 8086;
+        int port = 8085;
         LOG.info("Starting Jetty server...");
         Server server = newServer(port);
         try {
             server.start();
             LOG.info("Started Jetty server on http://localhost:{}", port);
+            LOG.info("Started Swagger UI on http://localhost:{}/swagger-ui", port);
 
             server.join();
         } finally {

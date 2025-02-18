@@ -21,7 +21,7 @@
     <dependencies>
         <dependency>
             <groupId>com.db</groupId>
-            <artifactId>user-service-resource</artifactId>
+            <artifactId>shared-resource</artifactId>
         </dependency>
 
         <!-- Jetty -->
