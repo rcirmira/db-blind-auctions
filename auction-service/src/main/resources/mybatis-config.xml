@@ -20,5 +20,6 @@
     <!-- Register the mapper file -->
     <mappers>
         <mapper resource="AuctionMapper.xml"/>
+        <mapper resource="AuctionBidMapper.xml"/>
     </mappers>
 </configuration>

@@ -1,5 +1,6 @@
 package com.db.system.auction.config.hk2;
 
+import com.db.system.auction.dao.AuctionBidDao;
 import com.db.system.auction.dao.AuctionDao;
 import com.db.system.auction.resource.auction.AuctionResourceImpl;
 import com.db.system.auction.service.AuctionDetailsService;
@@ -12,6 +13,7 @@ public class AuctionServiceBinder extends AbstractBinder {
     protected void configure() {
         // DAOs
         bind(AuctionDao.class).to(AuctionDao.class);
+        bind(AuctionBidDao.class).to(AuctionBidDao.class);
 
         // services
         bind(AuctionDetailsServiceImpl.class).to(AuctionDetailsService.class);

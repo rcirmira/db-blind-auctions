@@ -27,7 +27,7 @@ public class AuctionResourceImpl implements AuctionResource {
 
     @Override
     public AuctionBid endAuction(Integer auctionId) {
-        return null;
+        return auctionDetailsService.endAuction(auctionId);
     }
 
     @Override
@@ -37,6 +37,6 @@ public class AuctionResourceImpl implements AuctionResource {
 
     @Override
     public AuctionBid bidAuction(AuctionBidNew auctionBidNew, Integer userId) {
-        return null;
+        return auctionDetailsService.bidAuction(auctionBidNew,  userId);
     }
 }

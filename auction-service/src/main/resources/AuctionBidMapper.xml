@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.db.system.auction.dao.AuctionBidMapper">
+
+    <!-- Add or replace a bid in the auction_bid table -->
+    <insert id="addOrReplaceBid" useGeneratedKeys="true" keyProperty="id">
+        MERGE INTO auction_bid (auction_id, user_id, price)
+        KEY (auction_id, user_id)
+        VALUES (#{auctionId}, #{userId}, #{price});
+    </insert>
+
+    <!-- Get all bids for a specific auction ordered by price descending -->
+    <select id="getBidsForAuction" resultType="com.db.system.data.model.auction.AuctionBid">
+        SELECT id, auction_id as auctionId, user_id as userId, price
+        FROM auction_bid
+        WHERE auction_id = #{auctionId}
+        ORDER BY price DESC
+    </select>
+
+</mapper>

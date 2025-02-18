@@ -44,5 +44,6 @@ public interface BackendResource {
     @POST
     @Path("/auction/bid/user/token/{userToken}")
     @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
     AuctionBid bidAuction(AuctionBidNew auctionBidNew, @PathParam("userToken") String userToken);
 }

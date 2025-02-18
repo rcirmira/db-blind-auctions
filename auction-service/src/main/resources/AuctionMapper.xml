@@ -16,9 +16,15 @@
     </update>
 
     <select id="getAllActive" resultType="com.db.system.data.model.auction.Auction">
-        SELECT id, name, min_price, active
+        SELECT id, name, min_price as minPrice, active
         FROM auction
         WHERE active = true
+    </select>
+
+    <select id="get" resultType="com.db.system.data.model.auction.Auction">
+        SELECT id, name, min_price as minPrice, active
+        FROM auction
+        WHERE id = #{auctionId}
     </select>
 
 </mapper>

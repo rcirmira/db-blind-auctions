@@ -36,4 +36,11 @@ public class AuctionDao {
             return mapper.getAllActive();
         }
     }
+
+    public Auction get(Integer auctionId) {
+        try (SqlSession session = sqlSessionFactory.openSession(true)) {
+            AuctionMapper mapper = session.getMapper(AuctionMapper.class);
+            return mapper.get(auctionId);
+        }
+    }
 }

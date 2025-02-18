@@ -48,13 +48,7 @@ Then clean the build
 mvn verify
 ```
 ### How to execute the code
-[//]: # (TBC)
-
-### Testing
-[//]: # (TBC)
-
-[//]: # (TODO add unit tests)
-[//]: # (TODO add aggregate check)
-[//]: # (TODO add surefire report)
-[//]: # (TODO add jacoco)
-[//]: # (TODO explain why verify)
+You need to run 3 classes
+backend-service/src/main/java/com/db/system/backend/StartBackendService.java
+user-service/src/main/java/com/db/system/user/StartUserService.java
+auction-service/src/main/java/com/db/system/auction/StartAuctionService.java
