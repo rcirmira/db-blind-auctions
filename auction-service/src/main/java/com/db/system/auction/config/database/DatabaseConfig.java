@@ -14,8 +14,6 @@ import java.sql.Statement;
 import java.util.Objects;
 
 public class DatabaseConfig {
-    private static SqlSessionFactory sqlSessionFactory;
-
     public static DataSource getDataSource() {
         // TODO get the config data from mybatis-config.xml
         PooledDataSource dataSource = new PooledDataSource(
