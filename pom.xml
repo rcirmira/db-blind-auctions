@@ -23,9 +23,9 @@
         <maven.compiler.target>17</maven.compiler.target>
 
         <testng.version>7.11.0</testng.version>
-        <dependency.version.swagger>2.2.20</dependency.version.swagger>
+        <dependency.version.swagger>2.2.25</dependency.version.swagger>
         <dependency.version.jetty>12.0.14</dependency.version.jetty>
-        <dependency.version.jersey>3.1.9</dependency.version.jersey>
+        <dependency.version.jersey>3.0.16</dependency.version.jersey>
         <dependency.version.hk2>3.1.0</dependency.version.hk2>
         <dependency.version.jsonwebtoken>0.12.6</dependency.version.jsonwebtoken>
     </properties>
@@ -132,7 +132,7 @@
                 <version>${dependency.version.jetty}</version>
             </dependency>
 
-            <!-- Jersey for JAX-RS (Jakarta REST) support without HK2 -->
+            <!-- Jersey for JAX-RS (Jakarta REST) support -->
             <dependency>
                 <groupId>jakarta.ws.rs</groupId>
                 <artifactId>jakarta.ws.rs-api</artifactId>
@@ -154,6 +154,13 @@
             <dependency>
                 <groupId>org.glassfish.jersey.inject</groupId>
                 <artifactId>jersey-hk2</artifactId>
+                <version>${dependency.version.jersey}</version>
+            </dependency>
+
+            <!-- Jersey Proxy Client (Required for WebResourceFactory) -->
+            <dependency>
+                <groupId>org.glassfish.jersey.ext</groupId>
+                <artifactId>jersey-proxy-client</artifactId>
                 <version>${dependency.version.jersey}</version>
             </dependency>
 
@@ -189,8 +196,14 @@
             </dependency>
             <dependency>
                 <groupId>io.swagger.core.v3</groupId>
-                <artifactId>swagger-jaxrs2</artifactId>
+                <artifactId>swagger-jaxrs2-jakarta</artifactId>
                 <version>${dependency.version.swagger}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>com.fasterxml.jackson.core</groupId>
+                        <artifactId>jackson-annotations</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
 
             <!-- SLF4J API -->
