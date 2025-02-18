@@ -24,7 +24,9 @@ The code was divided into 3 modules under `system-parent` root maven project
 - auction-service-resource - API interface of the auction service making API calls easier
   
 The backend-service is running on http://localhost:8085 and the swagger over there is used to show easy to use UI to fire requests
+
 The user-service is running on http://localhost:8086
+
 The auction-service is running on http://localhost:8087
 
 The Swagger UI is running on http://localhost:8085/swagger-ui
@@ -45,7 +47,7 @@ mvn clean
 ```
 Then clean the build
 ```
-mvn verify
+mvn package
 ```
 ### How to execute the code
 You need to run 3 classes
