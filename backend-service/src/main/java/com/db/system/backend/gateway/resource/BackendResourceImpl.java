@@ -1,10 +1,12 @@
 package com.db.system.backend.gateway.resource;
 
-import com.db.system.user.data.model.*;
-import com.db.system.user.resource.auction.AuctionResource;
-import com.db.system.user.resource.user.UserResource;
-import io.swagger.v3.oas.annotations.tags.Tag;
-import jakarta.ws.rs.Path;
+import com.db.system.data.model.auction.Auction;
+import com.db.system.data.model.auction.AuctionAdd;
+import com.db.system.data.model.auction.AuctionBid;
+import com.db.system.data.model.auction.AuctionBidNew;
+import com.db.system.data.model.user.User;
+import com.db.system.resource.auction.AuctionResource;
+import com.db.system.resource.user.UserResource;
 import jakarta.ws.rs.WebApplicationException;
 import jakarta.ws.rs.client.Client;
 import jakarta.ws.rs.client.ClientBuilder;
@@ -56,7 +58,7 @@ public class BackendResourceImpl implements BackendResource {
     @Override
     public List<Auction> getAuctions() {
         try(Client client = getJerseyClient()) {
-            AuctionResource auctionResource = WebResourceFactory.newResource(AuctionResource.class, getUserResourceTarget(client));
+            AuctionResource auctionResource = WebResourceFactory.newResource(AuctionResource.class, getAuctionResourceTarget(client));
             return auctionResource.getAuctions();
         }
     }

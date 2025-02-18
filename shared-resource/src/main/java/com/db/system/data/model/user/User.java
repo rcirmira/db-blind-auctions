@@ -1,4 +1,4 @@
-package com.db.system.user.data.model;
+package com.db.system.data.model.user;
 
 public class User {
     private Integer id;

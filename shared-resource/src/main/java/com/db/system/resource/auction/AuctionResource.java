@@ -1,9 +1,9 @@
-package com.db.system.user.resource.auction;
+package com.db.system.resource.auction;
 
-import com.db.system.user.data.model.Auction;
-import com.db.system.user.data.model.AuctionAdd;
-import com.db.system.user.data.model.AuctionBid;
-import com.db.system.user.data.model.AuctionBidNew;
+import com.db.system.data.model.auction.Auction;
+import com.db.system.data.model.auction.AuctionAdd;
+import com.db.system.data.model.auction.AuctionBid;
+import com.db.system.data.model.auction.AuctionBidNew;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 
@@ -14,7 +14,8 @@ public interface AuctionResource {
     @POST
     @Path("/auction/add")
     @Produces(MediaType.APPLICATION_JSON)
-    Auction addAuction(AuctionAdd auction);
+    @Consumes(MediaType.APPLICATION_JSON)
+    Auction addAuction(AuctionAdd auctionAdd);
 
     @POST
     @Path("/auction/{auctionId}/end")
@@ -28,5 +29,7 @@ public interface AuctionResource {
 
     @POST
     @Path("/auction/bid/user/{userId}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
     AuctionBid bidAuction(AuctionBidNew auctionBidNew, @PathParam("userId") Integer userId);
 }

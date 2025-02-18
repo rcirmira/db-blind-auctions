@@ -1,7 +1,7 @@
 package com.db.system.user.dao;
 
 import com.db.system.user.config.database.MyBatisConfig;
-import com.db.system.user.data.model.User;
+import com.db.system.data.model.user.User;
 import jakarta.inject.Singleton;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;

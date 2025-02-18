@@ -1,0 +1,6 @@
+CREATE TABLE auction (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    min_price INT NOT NULL,
+    active BOOLEAN NOT NULL
+);

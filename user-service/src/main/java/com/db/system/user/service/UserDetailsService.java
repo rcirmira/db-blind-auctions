@@ -1,6 +1,6 @@
 package com.db.system.user.service;
 
-import com.db.system.user.data.model.User;
+import com.db.system.data.model.user.User;
 
 public interface UserDetailsService {
     User getUserByToken(String userToken);

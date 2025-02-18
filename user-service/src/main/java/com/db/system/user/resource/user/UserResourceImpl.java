@@ -1,6 +1,7 @@
 package com.db.system.user.resource.user;
 
-import com.db.system.user.data.model.User;
+import com.db.system.data.model.user.User;
+import com.db.system.resource.user.UserResource;
 import com.db.system.user.service.UserDetailsService;
 import jakarta.inject.Inject;
 import jakarta.inject.Singleton;

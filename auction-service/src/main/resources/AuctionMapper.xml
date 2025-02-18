@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.db.system.auction.dao.AuctionMapper">
+
+    <insert id="add" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO auction (name, min_price, active)
+        VALUES (#{name}, #{minPrice}, #{active})
+    </insert>
+
+    <update id="end">
+        UPDATE auction
+        SET active = false
+        WHERE id = #{id}
+    </update>
+
+    <select id="getAllActive" resultType="com.db.system.data.model.auction.Auction">
+        SELECT id, name, min_price, active
+        FROM auction
+        WHERE active = true
+    </select>
+
+</mapper>

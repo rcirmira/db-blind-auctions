@@ -3,7 +3,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.db.system.user.dao.UserMapper">
-    <resultMap id="UserResult" type="com.db.system.user.data.model.User">
+    <resultMap id="UserResult" type="com.db.system.data.model.user.User">
         <id column="id" property="id"/>
         <result column="name" property="name"/>
     </resultMap>

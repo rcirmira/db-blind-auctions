@@ -1,7 +1,7 @@
 package com.db.system.user.config.hk2;
 
 import com.db.system.user.dao.UserDao;
-import com.db.system.user.resource.user.UserResource;
+import com.db.system.resource.user.UserResource;
 import com.db.system.user.resource.user.UserResourceImpl;
 import com.db.system.user.service.JwtService;
 import com.db.system.user.service.JwtServiceImpl;

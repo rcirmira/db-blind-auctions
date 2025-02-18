@@ -1,6 +1,4 @@
-package com.db.system.user.data.model;
-
-import java.util.List;
+package com.db.system.data.model.auction;
 
 public class Auction {
     private Integer id;
