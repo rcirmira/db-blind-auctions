@@ -55,6 +55,23 @@ backend-service/src/main/java/com/db/system/backend/StartBackendService.java
 user-service/src/main/java/com/db/system/user/StartUserService.java
 auction-service/src/main/java/com/db/system/auction/StartAuctionService.java
 
+Alternatively you could just run fat jar in this way
+- to start user-service
+```
+cd user-service/target
+java -jar user-service-0.1-jar-with-dependencies.jar
+```
+- to start auction-service
+```
+cd auction-service/target
+java -jar auction-service-0.1-jar-with-dependencies.jar
+```
+- to start backend-service
+```
+cd backend-service/target
+java -jar backend-service-0.1-jar-with-dependencies.jar
+```
+
 Then these are the steps to run the auction
 1. Get a token for a user, e.g. Adam
 ```

@@ -95,15 +95,6 @@ public class BackendResourceImpl implements BackendResource {
         return client;
     }
 
-    // TODO build jar with dependencies and add simple cmd execution steps in README
-
-    // TODO implement following APIs
-    // Register a new product for auction by a seller and specify a minimum bid
-    // List the auctions in which it is possible to bid
-    // Register a buyer’s bid in an auction any number of times
-    // End the action and return the winning bid
-
-    // TODO add swagger to make the API calls easier
     // TODO generate surfire reports
     // TODO generate jacoco reports
     // TODO add jacoco-results-aggreggate

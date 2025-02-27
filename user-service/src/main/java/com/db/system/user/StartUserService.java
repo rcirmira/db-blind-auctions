@@ -15,10 +15,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
-import java.net.URISyntaxException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.Objects;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 public class StartUserService {
@@ -48,7 +46,15 @@ public class StartUserService {
         SqlSessionFactory sqlSessionFactory = MyBatisConfig.getSqlSessionFactory();
 
         try {
-            String users = Files.readString(Paths.get(Objects.requireNonNull(DatabaseConfig.class.getClassLoader().getResource("users.txt")).toURI()));
+            String users;
+            try (InputStream inputStream = DatabaseConfig.class.getClassLoader().getResourceAsStream("users.txt")) {
+                if (inputStream == null) {
+                    throw new IllegalStateException("schema.sql not found in JAR root!");
+                }
+
+                users = new String(inputStream.readAllBytes(), StandardCharsets.UTF_8);
+            }
+            LOG.info("Obtained users to initialize: {}", users);
             Scanner scanner = new Scanner(users);
             scanner.useDelimiter(",");
             while(scanner.hasNext()) {
@@ -59,7 +65,7 @@ public class StartUserService {
                     mapper.insertUser(new User(name));
                 }
             }
-        } catch (URISyntaxException | IOException e) {
+        } catch (IOException e) {
             LOG.warn("Cannot initialize auction users in the DB", e);
         }
     }

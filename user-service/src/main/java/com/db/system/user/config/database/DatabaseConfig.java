@@ -1,22 +1,20 @@
 package com.db.system.user.config.database;
 
 import org.apache.ibatis.datasource.pooled.PooledDataSource;
-import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.sql.DataSource;
 import java.io.IOException;
-import java.net.URISyntaxException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Objects;
 
 public class DatabaseConfig {
-    private static SqlSessionFactory sqlSessionFactory;
+    private static final Logger LOG = LoggerFactory.getLogger(DatabaseConfig.class);
 
     public static DataSource getDataSource() {
         // TODO get the config data from mybatis-config.xml
@@ -35,10 +33,18 @@ public class DatabaseConfig {
         try (Connection connection = dataSource.getConnection();
             Statement statement = connection.createStatement()) {
 
-            String schemaSql = Files.readString(Paths.get(Objects.requireNonNull(DatabaseConfig.class.getClassLoader().getResource("schema.sql")).toURI()));
+            String schemaSql;
+            try (InputStream inputStream = DatabaseConfig.class.getClassLoader().getResourceAsStream("schema.sql")) {
+                if (inputStream == null) {
+                    throw new IllegalStateException("schema.sql not found in JAR root!");
+                }
+
+                schemaSql = new String(inputStream.readAllBytes(), StandardCharsets.UTF_8);
+            }
+            LOG.info("Obtained SQL schema: {}", schemaSql);
 
             statement.execute(schemaSql);
-        } catch (URISyntaxException | IOException | SQLException e) {
+        } catch (IOException | SQLException e) {
             throw new RuntimeException("Failed to initialize database schema", e);
         }
     }
