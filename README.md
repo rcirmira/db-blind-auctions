@@ -45,9 +45,9 @@ Then clean the build
 ```
 mvn clean
 ```
-Then clean the build
+Then package and check unit tests (this will check if the code coverage is meeting limits defined in pom of each module)
 ```
-mvn package
+mvn vefiry
 ```
 ### How to execute the code
 You need to run 3 classes
@@ -108,3 +108,15 @@ curl -X 'POST' \
   -H 'accept: application/json' \
   -d ''
 ```
+## Testing
+By default, the project when running `mvn verify` is executing unit tests and generates surefire reports
+- `user-service/target/surefire-reports/index.html` - unit tests report for user-service
+- `auction-service/target/surefire-reports/index.html` - unit tests report for auction-service
+For practical reasons unit tests haven't been implemented in `backend-service`
+ 
+Additionally, there are also generated for `auction-service` and `user-service` additional reports with code coverage
+- `user-service/target/site/jacoco/index.html` - code coverage report for `user-service`
+- `auction-service/target/site/jacoco/index.html` - code coverage report for `auction-service`
+
+For both modules with unit tests there are limit checks, if the code coverage will fall below specified in pom the build will fail
+It would be possible to aggregate code coverage results from both modules using jacoco-maven-plugin goal:report-aggregate into one report, but it wouldn't give option to drill down into each modules' classes in the report.

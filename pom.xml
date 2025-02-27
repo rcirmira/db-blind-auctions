@@ -30,86 +30,22 @@
         <dependency.version.jsonwebtoken>0.12.6</dependency.version.jsonwebtoken>
     </properties>
 
-    <!--    <build>-->
-    <!--        <plugins>-->
-    <!--            <plugin>-->
-    <!--                <groupId>org.apache.maven.plugins</groupId>-->
-    <!--                <artifactId>maven-surefire-report-plugin</artifactId>-->
-    <!--                <version>3.0.0-M1</version>-->
-    <!--                <configuration>-->
-    <!--                    <outputDirectory>${basedir}/target/tests/server</outputDirectory>-->
-    <!--                </configuration>-->
-    <!--            </plugin>-->
-    <!--            <plugin>-->
-    <!--                <groupId>org.jacoco</groupId>-->
-    <!--                <artifactId>jacoco-maven-plugin</artifactId>-->
-    <!--                <version>0.8.0</version>-->
-    <!--                <executions>-->
-    <!--                    <execution>-->
-    <!--                        <id>pre-unit-test</id>-->
-    <!--                        <goals>-->
-    <!--                            <goal>prepare-agent</goal>-->
-    <!--                        </goals>-->
-    <!--                        <configuration>-->
-    <!--                            <destFile>${basedir}/target/coverage-reports/jacoco-unit.exec</destFile>-->
-    <!--                        </configuration>-->
-    <!--                    </execution>-->
-    <!--                    <execution>-->
-    <!--                        <id>post-unit-test</id>-->
-    <!--                        <phase>test</phase>-->
-    <!--                        <goals>-->
-    <!--                            <goal>report</goal>-->
-    <!--                        </goals>-->
-    <!--                        <configuration>-->
-    <!--                            <dataFile>${basedir}/target/coverage-reports/jacoco-unit.exec</dataFile>-->
-    <!--                            <outputDirectory>${basedir}/target/tests/coverage</outputDirectory>-->
-    <!--                        </configuration>-->
-    <!--                    </execution>-->
-    <!--                    <execution>-->
-    <!--                        <id>check</id>-->
-    <!--                        <goals>-->
-    <!--                            <goal>check</goal>-->
-    <!--                        </goals>-->
-    <!--                        <configuration>-->
-    <!--                            <dataFile>${basedir}/target/coverage-reports/jacoco-unit.exec</dataFile>-->
-    <!--                            <rules>-->
-    <!--                                <rule>-->
-    <!--                                    <element>BUNDLE</element>-->
-    <!--                                    <limits>-->
-    <!--                                        <limit>-->
-    <!--                                            <counter>LINE</counter>-->
-    <!--                                            <value>COVEREDRATIO</value>-->
-    <!--                                            <minimum>0.88</minimum>-->
-    <!--                                        </limit>-->
-    <!--                                        <limit>-->
-    <!--                                            <counter>INSTRUCTION</counter>-->
-    <!--                                            <value>COVEREDRATIO</value>-->
-    <!--                                            <minimum>0.92</minimum>-->
-    <!--                                        </limit>-->
-    <!--                                        <limit>-->
-    <!--                                            <counter>BRANCH</counter>-->
-    <!--                                            <value>COVEREDRATIO</value>-->
-    <!--                                            <minimum>0.86</minimum>-->
-    <!--                                        </limit>-->
-    <!--                                        <limit>-->
-    <!--                                            <counter>METHOD</counter>-->
-    <!--                                            <value>MISSEDCOUNT</value>-->
-    <!--                                            <maximum>4.00</maximum>-->
-    <!--                                        </limit>-->
-    <!--                                        <limit>-->
-    <!--                                            <counter>CLASS</counter>-->
-    <!--                                            <value>MISSEDCOUNT</value>-->
-    <!--                                            <maximum>1</maximum>-->
-    <!--                                        </limit>-->
-    <!--                                    </limits>-->
-    <!--                                </rule>-->
-    <!--                            </rules>-->
-    <!--                        </configuration>-->
-    <!--                    </execution>-->
-    <!--                </executions>-->
-    <!--            </plugin>-->
-    <!--        </plugins>-->
-    <!--    </build>-->
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-assembly-plugin</artifactId>
+                    <version>3.7.1</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.jacoco</groupId>
+                    <artifactId>jacoco-maven-plugin</artifactId>
+                    <version>0.8.12</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 
     <dependencyManagement>
         <dependencies>
