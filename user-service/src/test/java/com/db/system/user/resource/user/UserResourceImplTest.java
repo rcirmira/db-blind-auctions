@@ -9,7 +9,7 @@ import com.db.system.user.service.JwtServiceImpl;
 import com.db.system.user.service.UserDetailsService;
 import com.db.system.user.service.UserDetailsServiceImpl;
 import jakarta.ws.rs.core.Response;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
@@ -18,8 +18,8 @@ import static org.testng.Assert.assertNotNull;
 public class UserResourceImplTest {
     private UserResource userResource;
 
-    @BeforeMethod
-    public void setUp() {
+    @BeforeClass
+    public void setUpBeforeClass() {
         DatabaseConfig.getDataSource();
         UserDao userDao = new UserDao();
         userDao.insertUser(new User("Adam"));
