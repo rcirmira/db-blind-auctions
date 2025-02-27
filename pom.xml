@@ -206,13 +206,6 @@
                 </exclusions>
             </dependency>
 
-            <!-- Swagger UI -->
-            <dependency>
-                <groupId>org.webjars</groupId>
-                <artifactId>swagger-ui</artifactId>
-                <version>4.15.5</version>
-            </dependency>
-
             <!-- SLF4J API -->
             <dependency>
                 <groupId>org.slf4j</groupId>
