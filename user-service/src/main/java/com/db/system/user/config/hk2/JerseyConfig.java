@@ -19,5 +19,8 @@ public class JerseyConfig extends ResourceConfig {
 
         // Directly register the HK2 binder
         register(new UserServiceBinder());
+
+        // Disable wadl to avoid warning print-outs in the log
+        property("jersey.config.server.wadl.disableWadl", true);
     }
 }

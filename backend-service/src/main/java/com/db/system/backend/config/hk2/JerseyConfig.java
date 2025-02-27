@@ -31,6 +31,9 @@ public class JerseyConfig extends ResourceConfig {
         // Add the OpenAPI instance to the Jersey context
         property("swagger.openapi.info", openAPI);
 
+        // Disable wadl to avoid warning print-outs in the log
+        property("jersey.config.server.wadl.disableWadl", true);
+
         // Register HK2 dependency injection
         ServiceLocator locator = ServiceLocatorUtilities.createAndPopulateServiceLocator();
         ServiceLocatorUtilities.bind(locator, new BackendServiceBinder());
